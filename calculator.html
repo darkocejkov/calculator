@@ -1,0 +1,113 @@
+
+  
+
+<body>
+
+  <div class="container">
+    <div class='form-input'>
+      <label for="nEmpl"># Employees</label>
+      <input id='nEmployees' type="number"/>
+    </div>
+    <div class='form-input'>
+      <label>Average Salary</label>
+      <input id='avgSalary' type="number"/>
+      
+    </div>
+    <div class='form-input'>
+      <label># Operatories</label>
+      <input id='nOperatories' type="number"/>
+    </div>
+    <div class='form-input'>
+      <label># Steri Centers</label>
+      <input id='nSteri' type="number"/>
+    </div>
+    <div class='form-input'>
+      <label># Waiting Rooms</label>
+      <input id='nWaiting' type="number"/>
+    </div>
+    <div class='form-input'>
+      <label>Sqft. of Entire Practice</label>
+      <input id='sqFtEntire' type="number"/>
+    </div>
+    <div class='form-input'>
+      <label>Sqft. of Each Operatory (avg)</label>
+      <input id='sqFtOperatory' type="number"/>
+    </div>
+    <div class='form-input'>
+      <label>Ceiling Height</label>
+      <input id='ceilingHeight' type="number"/>
+    </div>
+    
+    <div class='form-input'>
+      <label>Cost of COBALT (2 x 2)</label>
+      <input type="number"/>
+    </div>
+    <div class='form-input'>
+      <label>Installation</label>
+      <input type="number"/>
+    </div>
+    <div class='form-input'>
+      <label>CFM of 1 COBALT (2 x 2) @ less than 50dB</label>
+      <input type="number"/>
+    </div>
+    <div class='form-input'>
+      <label>Cost of Electricity for 1 COBALT, monthly</label>
+      <input type="number"/>
+    </div>
+    <div class='form-input'>
+      <label>Cost of HEPA filters of 1 COBALT, monthly</label>
+      <input type="number"/>
+    </div>
+    
+  </div>
+  
+  <hr />
+  
+  <div>
+    <h3># of COBALT (2 x 2) required: <span id="calc_nCOBALT"></span></h3>
+    <h3>Air Changes Per Hour, Per Operatory:  <span id="calc_airChangesPerHourOperatory"></span></h3>
+    <h3>Air Changes Per Hour, entire Practice:  <span id="calc_airChangesPerHourEntire"></span></h3>
+    <h3>Capital Cost of Equipment including Installation:  <span id="calc_capitalCost"></span></h3>
+  </div>
+  
+  <hr />
+  <!-- 
+  <div class="container">
+  
+    <div class='form-input'>
+      <label>Residual Value</label>
+      <input value={costHEPA[0]} onChange={(e) => costHEPA[1](e.target.value)}/>
+    </div>
+  
+    <div class='form-input'>
+      <label>Interest Rate</label>
+      <input value={costHEPA[0]} onChange={(e) => costHEPA[1](e.target.value)}/>
+    </div>
+  
+    <div class='form-input'>
+      <label>Lease Period (months)</label>
+      <input value={costHEPA[0]} onChange={(e) => costHEPA[1](e.target.value)}/>
+    </div>
+  
+  </div>
+  
+  <div>
+    <h3>Monthly Lease Payment (equipment & installation): {calc_nCOBALT}</h3>
+  </div>
+  
+  <hr />
+  
+  <div>
+    <h3>Annual Wage: ${avgSalary[0]} / Monthly Wage: ${avgSalary[0]/12}</h3>
+    <h3>10% Productivity Increase: {}</h3>
+    <h3>Cost of Purified Air per Employee, Per month (incl. lease, elec., filters): {}</h3>
+    <h3>Cost of Purified Air Per Employee Per Month (electrical and filters only): {}</h3>
+    <h3>Effective Pay Increase Per Employee Per Hour (including lease, electrical and filters): {}</h3>
+    <h3>Effective Pay Increase Per Employee Per Hour (electrical and filters only): {}</h3>
+  </div> -->
+  
+  
+  
+</body>
+<link rel="stylesheet" href="./calculator.css"/>
+<script src="./calculator.js"/>
