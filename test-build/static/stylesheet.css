@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    width: 100vw;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat .label {
+    font-size: 1.5rem;
+}
+
+.stat-wrapper {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.form {
+    /*padding: 1rem;*/
+}
+
+.wrapper {
+    /*width: 100vw;*/
+}
+
+.form-input{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 25%
+}
