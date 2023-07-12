@@ -3,9 +3,21 @@ import "./App.css";
 
 import {useState} from 'react'
 
+const NumberInput = ({label, value, setValue, id}) => (
+    <div className='form-input'>
+      <label htmlFor={id}>{label}</label>
+      <input id={id} min={0} type={'number'} value={value} onChange={(e) => setValue(Number(e.target.value))}/>
+    </div>
+)
+
+const StatDisplay = ({label, stat}) => (
+    <h3 className={'stat'}>
+      <span className={'label'}>{label}</span>
+      <span className={'number'}>{stat}</span>
+    </h3>
+)
+
 function App() {
-
-
   const nEmployees = useState(9)
   const avgSalary = useState(60000)
   const nOperatories = useState(6)
@@ -21,115 +33,44 @@ function App() {
   const costElectricity = useState(1)
   const costHEPA = useState(8)
 
-  const calc_nCOBALT = Number(nOperatories[0]) + Number(nSteri[0]) + Number(nWaiting[0])
-  const calc_airChangesPerHourOperatory = (cfmCOBALT[0]*60)/(ceilingHeight[0])/(sqFtOperatory[0])
-  const calc_airChangesPerHourEntire = (cfmCOBALT[0]*60)/ceilingHeight[0]*calc_nCOBALT/sqFtEntire[0]
-  const calc_capitalCost = (costCOBALT[0] + costInstallation[0])*calc_nCOBALT
+  const calc_nCOBALT = (nOperatories[0]) + (nSteri[0]) + (nWaiting[0])
+  const calc_airChangesPerHourOperatory = ((cfmCOBALT[0])*60)/((ceilingHeight[0]))/((sqFtOperatory[0]))
+  const calc_airChangesPerHourEntire = (cfmCOBALT[0]*60)/(ceilingHeight[0])*(calc_nCOBALT)/(sqFtEntire[0])
+  const calc_capitalCost = (costCOBALT[0] + (costInstallation[0]))*(calc_nCOBALT)
 
   return (
-    <div>
+      <div className={'wrapper'}>
+        <div className={'form'}>
 
-      <div className="container">
-        <div className='form-input'>
-          <label># Employees</label>
-          <input value={nEmployees[0]} onChange={(e) => nEmployees[1](e.target.value)}/>
-        </div>
-        <div className='form-input'>
-          <label>Average Salary</label>
-          <input value={avgSalary[0]} onChange={(e) => avgSalary[1](e.target.value)}/>
-        </div>
-        <div className='form-input'>
-          <label># Operatories</label>
-          <input value={nOperatories[0]} onChange={(e) => nOperatories[1](e.target.value)}/>
-        </div>
-        <div className='form-input'>
-          <label># Steri Centers</label>
-          <input value={nSteri[0]} onChange={(e) => nSteri[1](e.target.value)}/>
-        </div>
-        <div className='form-input'>
-          <label># Waiting Rooms</label>
-          <input value={nWaiting[0]} onChange={(e) => nWaiting[1](e.target.value)}/>
-        </div>
-        <div className='form-input'>
-          <label>Sqft. of Entire Practice</label>
-          <input value={sqFtEntire[0]} onChange={(e) => sqFtEntire[1](e.target.value)}/>
-        </div>
-        <div className='form-input'>
-          <label>Sqft. of Each Operatory (avg)</label>
-          <input value={sqFtOperatory[0]} onChange={(e) => sqFtOperatory[1](e.target.value)}/>
-        </div>
-        <div className='form-input'>
-          <label>Ceiling Height</label>
-          <input value={ceilingHeight[0]} onChange={(e) => ceilingHeight[1](e.target.value)}/>
-        </div>
-        <div className='form-input'>
-          <label>Cost of COBALT (2 x 2)</label>
-          <input value={costCOBALT[0]} onChange={(e) => costCOBALT[1](e.target.value)}/>
-        </div>
-        <div className='form-input'>
-          <label>Installation</label>
-          <input value={costInstallation[0]} onChange={(e) => costInstallation[1](e.target.value)}/>
-        </div>
-        <div className='form-input'>
-          <label>CFM of 1 COBALT (2 x 2) @ less than 50dB</label>
-          <input value={cfmCOBALT[0]} onChange={(e) => cfmCOBALT[1](e.target.value)}/>
-        </div>
-        <div className='form-input'>
-          <label>Cost of Electricity for 1 COBALT, monthly</label>
-          <input value={costElectricity[0]} onChange={(e) => nEmployees[1](e.target.value)}/>
-        </div>
-        <div className='form-input'>
-          <label>Cost of HEPA filters of 1 COBALT, monthly</label>
-          <input value={costHEPA[0]} onChange={(e) => costHEPA[1](e.target.value)}/>
+          <div className="container">
+
+            <NumberInput label={"# Employees"} id={'nEmployees'} value={nEmployees[0]} setValue={nEmployees[1]}/>
+
+            <NumberInput value={avgSalary[0]} setValue={avgSalary[1]} label={'Average Salary'} id={'avgSalary'}/>
+            <NumberInput value={nOperatories[0]} setValue={nOperatories[1]} label={'# Operatories'} id={'nOperatories'}/>
+            <NumberInput value={nSteri[0]} setValue={nSteri[1]} label={'# Steri'} id={'nSteri'}/>
+            <NumberInput value={nWaiting[0]} setValue={nWaiting[1]} label={'# Waiting Rooms'} id={'nWaiting'}/>
+            <NumberInput value={sqFtEntire[0]} setValue={sqFtEntire[1]} label={'Sqft. of entire practice'} id={'sqFtEntire'}/>
+            <NumberInput value={sqFtOperatory[0]} setValue={sqFtOperatory[1]} label={'Sqft. of Operatory (avg)'} id={'sqFtOperatory'}/>
+            <NumberInput value={ceilingHeight[0]} setValue={ceilingHeight[1]} label={'Ceiling Height'} id={'ceilingHeight'}/>
+            <NumberInput value={costCOBALT[0]} setValue={costCOBALT[1]} label={'Cost of Cobalt (2 x 2)'} id={'costCOBALT'}/>
+            <NumberInput value={costInstallation[0]} setValue={costInstallation[1]} label={'Cost of Installation'} id={'costInstallation'}/>
+            <NumberInput value={cfmCOBALT[0]} setValue={cfmCOBALT[1]} label={'CFM of 1 COBALT (2 x 2) @ less than 50dB'} id={'cfmCOBALT'}/>
+            <NumberInput value={nEmployees[0]} setValue={nEmployees[1]} label={'Cost of Electricity for 1 COBALT, monthly'} id={'nEmployees'}/>
+            <NumberInput value={costHEPA[0]} setValue={costHEPA[1]} label={'Cost of HEPA filters of 1 COBALT, monthly'} id={'costHEPA'}/>
+
+          </div>
+
+          <div className={'container'}>
+            <StatDisplay label={'# of COBALT (2 x 2) required'} stat={calc_nCOBALT}/>
+            <StatDisplay label={'Air Changes Per Hour, Per Operatory'} stat={calc_airChangesPerHourOperatory.toFixed(2)}/>
+            <StatDisplay label={'Air Changes Per Hour, entire Practice'} stat={calc_airChangesPerHourEntire.toFixed(2)}/>
+            <StatDisplay label={'Capital Cost of Equipment including Installation'} stat={calc_capitalCost}/>
+          </div>
+
         </div>
       </div>
 
-      <hr />
-
-      <div>
-        <h3># of COBALT (2 x 2) required: {calc_nCOBALT}</h3>
-        <h3>Air Changes Per Hour, Per Operatory: {calc_airChangesPerHourOperatory}</h3>
-        <h3>Air Changes Per Hour, entire Practice: {calc_airChangesPerHourEntire}</h3>
-        <h3>Capital Cost of Equipment including Installation: {calc_capitalCost}</h3>
-      </div>
-
-      <hr />
-
-      <div className="container">
-
-        <div className='form-input'>
-          <label>Residual Value</label>
-          <input value={costHEPA[0]} onChange={(e) => costHEPA[1](e.target.value)}/>
-        </div>
-
-        <div className='form-input'>
-          <label>Interest Rate</label>
-          <input value={costHEPA[0]} onChange={(e) => costHEPA[1](e.target.value)}/>
-        </div>
-
-        <div className='form-input'>
-          <label>Lease Period (months)</label>
-          <input value={costHEPA[0]} onChange={(e) => costHEPA[1](e.target.value)}/>
-        </div>
-
-      </div>
-
-      <div>
-        <h3>Monthly Lease Payment (equipment & installation): {calc_nCOBALT}</h3>
-      </div>
-
-      <hr />
-
-      <div>
-        <h3>Annual Wage: ${avgSalary[0]} / Monthly Wage: ${avgSalary[0]/12}</h3>
-        <h3>10% Productivity Increase: {}</h3>
-        <h3>Cost of Purified Air per Employee, Per month (incl. lease, elec., filters): {}</h3>
-        <h3>Cost of Purified Air Per Employee Per Month (electrical and filters only): {}</h3>
-        <h3>Effective Pay Increase Per Employee Per Hour (including lease, electrical and filters): {}</h3>
-        <h3>Effective Pay Increase Per Employee Per Hour (electrical and filters only): {}</h3>
-      </div>
-
-    </div>
   );
 }
 
